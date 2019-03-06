@@ -1,0 +1,15 @@
+if (request.method == "POST"):
+        name = request.form["name"]
+        email = request.form["email"]
+        password = request.form.get("password", False)
+        confirm = request.form.get("confirm", False)
+        message = password
+        return render_template("signup.html", message = message)
+    else:
+        return render_template("signup.html", message = message)
+
+        def getUserId(email):
+                cur = dbConn.getCursor()
+                cur.execute("SELECT user_id FROM users WHERE email = %s", (email))
+                row = cur.fetchone()
+                return row["user_id"]

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+</head>
+<body>
+    <div class="flash">
+        <li>{{ message }}</li>
+    </div>
+    {% from "includes/_formhelpers.html" import render_field %}
+    <div>
+        <form method="POST" autocomplete="off">
+            <div>
+                {{render_field(form.name)}}
+            </div>
+            <div>
+                {{render_field(form.email)}}
+            </div>
+            <div>
+                {{render_field(form.password)}}
+            </div>
+            <div>
+                {{render_field(form.confirm)}}
+            </div>
+            <input type="submit" value="Signup">
+        </form>
+    </div>
+    <div>
+        <a href="/login"> login </a>
+    </div>
+</body>
+</html>

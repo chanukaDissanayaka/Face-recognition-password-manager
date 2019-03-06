@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<body>
+<video id="player" controls autoplay></video>
+<button id="capture">Capture</button>
+<button id="upload" class="upload">upload</button>
+<button id="upload2" class="upload2" onclick="Get_screenshot">upload2</button>
+<canvas id="canvas" width=1024 height=728></canvas>
+<script>
+    const player = document.getElementById('player');
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+    const captureButton = document.getElementById('capture');
+    const upload = document.getElementById("upload");
+
+    const constraints = {
+        video: true,
+    };
+
+    captureButton.addEventListener('click', () => {
+        context.drawImage(player, 0, 0, canvas.width, canvas.height);
+
+        // Stop all video streams.
+        player.srcObject.getVideoTracks().forEach(track => track.stop());
+    });
+
+    navigator.mediaDevices.getUserMedia(constraints)
+        .then((stream) => {
+            // Attach the video stream to the video element and autoplay.
+            player.srcObject = stream;
+        });
+    upload.
+
+    $document.getElementById("upload").click(function(){
+        var dataUrl = canvas.toDataURL("image/jpeg", 0.85);
+        $("#uploading").show();
+        $.ajax({
+            type: "POST",
+            url: "/webcam/",
+            data: {
+                imgBase64: dataUrl
+            },
+            success: function(data){
+                console.log(data);
+                $('#camFeedback').html(data);
+            }
+        }).done(function(msg) {
+            console.log("saved");
+            $("#uploading").hide();
+            $("#uploaded").show();
+        });
+    });
+    function Get_screenshot() {
+        html2canvas(document.body, {
+            onrendered: function (canvas) {
+                var img = canvas.toDataURL('image/png');
+                $.ajax({
+                    type: "POST",
+                    url: "/webcam",
+                    data: {
+                        imgBase64: dataUrl
+                    }
+                }).done(function (msg) {
+                    alert(msg);
+                });
+            }
+        });
+    }
+
+</script>
+</body>
+</html>
