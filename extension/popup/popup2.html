@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    
+    <style>
+        .login-container{
+            display: none;
+        }
+        .if-Logged{
+            display: none;
+        }
+		body{
+			width: 250px;
+			height:130px;
+			color : gray;
+		}
+    </style>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+    
+</head>
+<body>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="http://127.0.0.1:5000/">PassFill</a>
+			</div>
+	</nav>
+	<div class="container h-100">
+		<div class="row align-items-center h-100">
+			<div class="col-12 mx-auto">
+				<div >
+				
+					<div id="if-Logged">
+						<div class="alert alert-success">
+							<strong><h4> active </h4></strong>
+							<div id = "remove-btn">
+								<p> you have a saved password for this site </p>
+								<button class="btn btn-outline-primary" id="remove-pass">Remove Saved Password</button>
+							</div>
+						</div>
+						<button id ='logout'><a href="http://127.0.0.1:5000/logout" target="_blank">Logout</a></button>
+					</div>
+					<div id="login-container" >
+						<div>
+							<p> please login to use service</p>
+						</div>
+						<button class="btn btn-outline-primary btn-lg"><a href="http://127.0.0.1:5000/login" target="_blank">login</a></button>
+						<button class="btn btn-outline-primary btn-lg"><a href="http://127.0.0.1:5000/signup" target="_blank">register</a></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <script src="../jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="popup.js"></script>
+</body>
+</html>

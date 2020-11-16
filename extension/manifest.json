@@ -1,0 +1,26 @@
+
+{
+    "name": "passFill ext5",
+    "version": "1.0",
+    "manifest_version": 2,
+    "description": "An extension that logins into your accounts using face recognition.",
+    "browser_action": {
+        "default_menu": "Menu",
+        "default_popup": "popup/popup2.html"
+},
+
+    "permissions": [
+    "tabs", "<all_urls>", "activeTab", "storage", "cookies"
+],
+    "background": {
+        "scripts": ["jquery-3.3.1.min.js","background/background.js","background/messageListner.js", "crypto/aes.js"],
+        "persistent": false
+    },
+
+    "content_scripts": [
+		
+        {"js": ["jquery-3.3.1.min.js","content/loginFill.js", "content/savePassword.js", "content/checkLogin.js"],"matches": ["http://127.0.0.1:5000/*"]},
+		
+        {"js":["jquery-3.3.1.min.js", "content/savePassword.js","content/loginFill.js"],"matches": ["<all_urls>"]}
+]
+}
